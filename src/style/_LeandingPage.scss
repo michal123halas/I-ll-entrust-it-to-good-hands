@@ -1,0 +1,14 @@
+.menuList {
+  display: flex;
+
+
+  li {
+    list-style: none;
+    margin: 10px;
+    cursor: pointer;
+     &:hover{
+       border: 1px solid black;
+       padding: 5px;
+     }
+  }
+}

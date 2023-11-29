@@ -1,0 +1,23 @@
+@import "Variable";
+.buttonSingIn{
+ background-color: white;
+  margin: 10px;
+  border: 1px solid white;
+ cursor: pointer;
+
+  &:hover{
+    border: 1px  solid $primer-color ;
+   padding: 5px;
+  }
+}
+.buttonMainContent{
+ background-color: white;
+ width: 130px;
+ height: 70px;
+ //text-align: center;
+ cursor: pointer;
+ border: 1px solid black;
+ font-size: 20px;
+ margin: 100px 10px 100px 10px;
+}
+
