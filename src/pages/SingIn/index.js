@@ -1,19 +1,23 @@
-import React from 'react';
+import {signInWithEmailAndPassword,getAuth} from 'firebase/auth';
 import TitleReusable from "../../component/ReusableItem/TitleReusable";
 import ButtonReusable from "../../component/ReusableItem/ButtonReusable";
-import {signInWithEmailAndPassword} from 'firebase/auth';
+import app from '../../component/root/FireBase';
+
+
 
 const Index = () => {
 
 
 const handleLogin =async(event)=> {
     event.preventDefault()
-    const email = event.target.password.value
+    const email = event.target.email.value
     const password = event.target.password.value
+    const auth = getAuth()
 
     try {
-        const userCredential = await signInWithEmailAndPassword(email, password, auth)
+        const userCredential = await signInWithEmailAndPassword( auth,email, password)
         const user = userCredential.user
+        console.log('Zalogowano pomyślnie:', user);
     }catch (error){
         console.log('error', error)
     }
@@ -24,13 +28,14 @@ const handleLogin =async(event)=> {
     return (
         <div className="SingIn">
           <TitleReusable textTwo={'Sing In'}/>
-            <form>
+            <form onSubmit={handleLogin}>
                 <label htmlFor='email' >Email</label><br/>
                     <input name='email' type='email'/><br/>
                 <label htmlFor='password'>Password</label><br/>
                 <input name='password' type='password'/>
+                <button type='submit'>ELO</button>
+                {/*<ButtonReusable classScss='buttonSingInForm'  buttonTextOne='Registration' buttonTextTwo='SingIn' buttonTypeTwo='submit'/>*/}
             </form>
-            <ButtonReusable classScss='buttonSingInForm'  buttonTextOne='Registration' buttonTextTwo='SingIn' buttonTypeTwo='submit'/>
         </div>
     );
 };
